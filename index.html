@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Actividades Individuales</title>
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+        text-align: center;
+        margin: 0;
+    }
+
+    header {
+        background: #222;
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    nav {
+        margin: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        background: #1CAAD9;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background: #148bb0;
+    }
+
+    .section {
+        display: none;
+        padding: 20px;
+    }
+
+    img {
+        width: 300px;
+        border-radius: 10px;
+        margin: 10px;
+    }
+
+    video {
+        width: 400px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    iframe {
+        width: 640px;
+        height: 400px;
+        border-radius: 10px;
+    }
+</style>
+
+<script>
+function mostrar(seccion) {
+    document.getElementById("A").style.display = "none";
+    document.getElementById("B").style.display = "none";
+    document.getElementById("C").style.display = "none";
+
+    document.getElementById(seccion).style.display = "block";
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+Actividades Individuales - Procesamiento de Imágenes
+      <span style="font-size:16px; color:#1CAAD9;">
+        JOSUE DAVID MONASTERIO CALIZAYA
+    </span>
+</header>
+
+<nav>
+    <button onclick="mostrar('A')">Inciso A</button>
+    <button onclick="mostrar('B')">Inciso B</button>
+    <button onclick="mostrar('C')">Inciso C</button>
+</nav>
+
+<!-- INCISO A -->
+<div id="A" class="section">
+    <h2>Inciso A - Clasificación de Texturas</h2>
+
+    <img src="imagenA.jpeg" alt="Imagen A">
+
+    <p>
+        <a href="INDIVIDUAL_INCISO_A.rar" download>
+            <button>Descargar Archivo A</button>
+        </a>
+    </p>
+</div>
+
+<!-- INCISO B -->
+<div id="B" class="section">
+    <h2>Inciso B - Filtro de Suavizado</h2>
+
+    <img src="imagenB.jpeg" alt="Imagen B">
+
+    <p>
+        <a href="INDIVIDUAL_INCISO_B.rar" download>
+            <button>Descargar Archivo B</button>
+        </a>
+    </p>
+</div>
+
+<!-- INCISO C -->
+<div id="C" class="section">
+    <h2>Inciso C - Cover "La Vaca Lola"</h2>
+
+    <img src="imagenC.jpeg" alt="Imagen C">
+
+    <video controls>
+        <source src="videoC.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+    </video>
+
+    <h3>Modelo 3D</h3>
+
+    <div class="sketchfab-embed-wrapper">
+        <iframe title="chicken dance animation"
+        frameborder="0"
+        allowfullscreen
+        allow="autoplay; fullscreen; xr-spatial-tracking"
+        src="https://sketchfab.com/models/93ac917d38db487eb81cf506d21f8fd4/embed">
+        </iframe>
+    </div>
+
+</div>
+
+<script>
+    mostrar('A'); // inicia en A
+</script>
+
+</body>
+</html>
