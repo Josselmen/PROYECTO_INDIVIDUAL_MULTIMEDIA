@@ -2,186 +2,413 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Actividades Individuales</title>
+<title>Actividades - Josue Monasterio</title>
 
 <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
         font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg, #2c1a1d, #4b2e2e);
+        background: linear-gradient(160deg, #1a1014, #2e1a1a, #3a2010);
         color: #fff;
-        text-align: center;
-        margin: 0;
+        min-height: 100vh;
     }
 
+    /* ── HEADER ── */
     header {
-        background: linear-gradient(90deg, #ff7b54, #ffb26b);
-        padding: 25px;
-        font-size: 26px;
-        font-weight: bold;
-        color: #2c1a1d;
+        background: linear-gradient(90deg, #c0392b, #e67e22, #c0392b);
+        background-size: 200% auto;
+        animation: shimmer 5s linear infinite;
+        padding: 32px 20px 28px;
+        text-align: center;
+    }
+    @keyframes shimmer {
+        0%   { background-position: 0% center; }
+        100% { background-position: 200% center; }
+    }
+    header h1 {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    header .subtitle {
+        font-size: 13px;
+        margin-top: 6px;
+        color: rgba(255,255,255,0.75);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    header .materia {
+        font-size: 11px;
+        margin-top: 4px;
+        color: rgba(255,255,255,0.5);
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
 
-    header span {
-        display: block;
-        font-size: 16px;
-        margin-top: 5px;
-    }
-
+    /* ── NAV ── */
     nav {
-        margin: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 24px 20px;
+        background: rgba(0,0,0,0.3);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    button {
-        padding: 12px 25px;
-        margin: 8px;
+    .nav-btn {
+        padding: 11px 28px;
         border: none;
-        background: #ff7b54;
-        color: white;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
         cursor: pointer;
+        transition: background 0.2s, transform 0.15s;
+        background: rgba(255,255,255,0.08);
+        color: #ccc;
+    }
+    .nav-btn:hover {
+        background: rgba(230,126,34,0.35);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+    .nav-btn.active {
+        background: #c0392b;
+        color: #fff;
+    }
+    .nav-btn.practica {
+        background: rgba(192,57,43,0.2);
+        border: 1px solid rgba(192,57,43,0.5);
+        color: #e07060;
+    }
+    .nav-btn.practica:hover, .nav-btn.practica.active {
+        background: #c0392b;
+        color: #fff;
+        border-color: #c0392b;
+    }
+
+    /* ── SECTIONS ── */
+    .section { display: none; padding: 50px 40px; max-width: 1000px; margin: 0 auto; }
+    .section.active { display: block; }
+
+    .section-title {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #e67e22;
+        margin-bottom: 6px;
+    }
+    .section-heading {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #fff;
+        border-bottom: 2px solid rgba(192,57,43,0.4);
+        padding-bottom: 14px;
+    }
+    .section-desc {
+        font-size: 15px;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.7);
+        max-width: 720px;
+        margin-bottom: 36px;
+    }
+
+    /* ── IMAGES ── */
+    .img-gallery {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 36px;
+    }
+    .img-gallery img {
+        width: 460px;
+        max-width: 100%;
         border-radius: 8px;
-        font-size: 16px;
-        transition: 0.3s;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+        border: 1px solid rgba(255,255,255,0.08);
+        transition: transform 0.3s;
     }
+    .img-gallery img:hover { transform: scale(1.02); }
+    .img-gallery.single img { width: 680px; }
 
-    button:hover {
-        background: #ff5722;
-        transform: scale(1.05);
+    /* ── VIDEO ── */
+    .video-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 36px;
     }
-
-    .section {
-        display: none;
-        padding: 30px;
-        background: rgba(255,255,255,0.05);
-        margin: 20px;
-        border-radius: 15px;
-    }
-
-    img {
-        width: 500px;
-        max-width: 90%;
-        border-radius: 15px;
-        margin: 15px;
-        box-shadow: 0px 0px 20px rgba(255,123,84,0.5);
-    }
-
     video {
-        width: 600px;
-        max-width: 95%;
-        margin: 15px;
-        border-radius: 15px;
-        box-shadow: 0px 0px 20px rgba(255,178,107,0.5);
-    }
-
-    iframe {
         width: 700px;
-        max-width: 95%;
-        height: 400px;
-        border-radius: 15px;
-        margin-top: 20px;
+        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+        border: 1px solid rgba(255,255,255,0.08);
     }
 
-    p {
-        max-width: 700px;
-        margin: auto;
-        line-height: 1.6;
+    /* ── IFRAME ── */
+    .embed-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 36px;
+    }
+    .embed-wrap iframe {
+        border-radius: 8px;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.6);
     }
 
+    /* ── DOWNLOAD BTN ── */
+    .download-area {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .btn-download {
+        padding: 13px 36px;
+        background: #c0392b;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.15s;
+        display: inline-block;
+    }
+    .btn-download:hover {
+        background: #a93226;
+        transform: translateY(-1px);
+    }
+
+    /* ── PRACTICA sub-nav ── */
+    .practica-subnav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        padding-bottom: 20px;
+    }
+    .sub-btn {
+        padding: 9px 22px;
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 4px;
+        background: rgba(255,255,255,0.05);
+        color: #aaa;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .sub-btn:hover { background: rgba(192,57,43,0.3); color:#fff; border-color: #c0392b; }
+    .sub-btn.active { background: rgba(192,57,43,0.5); color: #fff; border-color: #c0392b; }
+
+    .sub-section { display: none; }
+    .sub-section.active { display: block; }
+
+    .block-label {
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: rgba(255,255,255,0.35);
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        margin-top: -10px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+        .section { padding: 30px 18px; }
+        .img-gallery.single img { width: 100%; }
+    }
 </style>
-
-<script>
-function mostrar(seccion) {
-    document.getElementById("A").style.display = "none";
-    document.getElementById("B").style.display = "none";
-    document.getElementById("C").style.display = "none";
-
-    document.getElementById(seccion).style.display = "block";
-}
-</script>
-
 </head>
 
 <body>
 
 <header>
-Actividades Individuales - Procesamiento de Imágenes
-<span>JOSUE DAVID MONASTERIO CALIZAYA</span>
+    <h1>Actividades Individuales — Procesamiento de Imagenes</h1>
+    <div class="subtitle">Josue David Monasterio Calizaya</div>
+    <div class="materia">Multimedia</div>
 </header>
 
 <nav>
-    <button onclick="mostrar('A')">Inciso A</button>
-    <button onclick="mostrar('B')">Inciso B</button>
-    <button onclick="mostrar('C')">Inciso C</button>
+    <button class="nav-btn active"  onclick="mostrar('A')">Inciso A</button>
+    <button class="nav-btn"         onclick="mostrar('B')">Inciso B</button>
+    <button class="nav-btn"         onclick="mostrar('C')">Inciso C</button>
+    <button class="nav-btn practica" onclick="mostrar('P')">Practica 1</button>
 </nav>
 
-<!-- INCISO A -->
-<div id="A" class="section">
-    <h2>Inciso A - Clasificación de Texturas</h2>
-
-    <p>
-    Este ejercicio consiste en analizar una imagen a nivel de píxeles para identificar diferentes tipos de superficies,
-    como césped, tierra o asfalto. Se aplican técnicas de procesamiento digital similares a las usadas en imágenes
-    satelitales, permitiendo diferenciar zonas según sus características visuales.
+<!-- ═══════════════════════════════════════════════════════════ INCISO A -->
+<div id="A" class="section active">
+    <div class="section-title">Inciso A</div>
+    <h2 class="section-heading">Clasificacion de Texturas</h2>
+    <p class="section-desc">
+        Este ejercicio consiste en analizar una imagen a nivel de pixeles para identificar diferentes tipos de superficies,
+        como cesped, tierra o asfalto. Se aplican tecnicas de procesamiento digital similares a las usadas en imagenes
+        satelitales, permitiendo diferenciar zonas segun sus caracteristicas visuales.
     </p>
-
-    <img src="imagenA.jpeg" alt="Imagen A">
-
-    <p>
+    <div class="img-gallery single">
+        <img src="imagenA.jpeg" alt="Clasificacion de Texturas">
+    </div>
+    <div class="download-area">
         <a href="INDIVIDUAL_INCISO_A.rar" download>
-            <button>Descargar Archivo A</button>
+            <button class="btn-download">Descargar Archivo A</button>
         </a>
-    </p>
+    </div>
 </div>
 
-<!-- INCISO B -->
+<!-- ═══════════════════════════════════════════════════════════ INCISO B -->
 <div id="B" class="section">
-    <h2>Inciso B - Filtro de Suavizado</h2>
-
-    <p>
-    En este ejercicio se implementa un filtro de promedio utilizando una ventana de 3x3 píxeles. Este proceso reduce el ruido
-    de la imagen y suaviza los cambios bruscos de color, mejorando la calidad visual y facilitando el análisis posterior.
+    <div class="section-title">Inciso B</div>
+    <h2 class="section-heading">Filtro de Suavizado</h2>
+    <p class="section-desc">
+        En este ejercicio se implementa un filtro de promedio utilizando una ventana de 3x3 pixeles. Este proceso reduce el ruido
+        de la imagen y suaviza los cambios bruscos de color, mejorando la calidad visual y facilitando el analisis posterior.
     </p>
-
-    <img src="imagenB.jpeg" alt="Imagen B">
-
-    <p>
+    <div class="img-gallery single">
+        <img src="imagenB.jpeg" alt="Filtro de Suavizado">
+    </div>
+    <div class="download-area">
         <a href="INDIVIDUAL_INCISO_B.rar" download>
-            <button>Descargar Archivo B</button>
+            <button class="btn-download">Descargar Archivo B</button>
         </a>
-    </p>
+    </div>
 </div>
 
-<!-- INCISO C -->
+<!-- ═══════════════════════════════════════════════════════════ INCISO C -->
 <div id="C" class="section">
-    <h2>Inciso C - Cover "La Vaca Lola"</h2>
-
-    <p>
-    Este ejercicio integra multimedia, combinando audio, animación y modelado 3D. Se realizó un cover de la canción
-    "La Vaca Lola", sincronizando el movimiento del personaje con el ritmo de la música, logrando una representación
-    visual dinámica y atractiva.
+    <div class="section-title">Inciso C</div>
+    <h2 class="section-heading">Cover — La Vaca Lola</h2>
+    <p class="section-desc">
+        Este ejercicio integra multimedia, combinando audio, animacion y modelado 3D. Se realizo un cover de la cancion
+        La Vaca Lola, sincronizando el movimiento del personaje con el ritmo de la musica, logrando una representacion
+        visual dinamica y atractiva.
     </p>
-
-    <img src="imagenC.jpeg" alt="Imagen C">
-
-    <video controls>
-        <source src="videoC.mp4" type="video/mp4">
-        Tu navegador no soporta video.
-    </video>
-
-    <h3>Modelo 3D</h3>
-
-    <div class="sketchfab-embed-wrapper">
-        <iframe title="chicken dance animation"
-        frameborder="0"
-        allowfullscreen
-        allow="autoplay; fullscreen; xr-spatial-tracking"
-        src="https://sketchfab.com/models/93ac917d38db487eb81cf506d21f8fd4/embed">
-        </iframe>
+    <div class="img-gallery single">
+        <img src="imagenC.jpeg" alt="Cover La Vaca Lola">
+    </div>
+    <div class="video-wrap">
+        <video controls>
+            <source src="videoC.mp4" type="video/mp4">
+            Tu navegador no soporta video.
+        </video>
     </div>
 
+    <div class="section-title" style="margin-bottom:14px;">Modelo 3D — WebGL</div>
+    <div class="embed-wrap">
+        <iframe frameborder="0"
+            src="https://itch.io/embed/4688502"
+            width="552" height="167">
+            <a href="https://josuejozz.itch.io/pollo-baila">POLLO_BAILA by josuejozz</a>
+        </iframe>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ PRACTICA 1 -->
+<div id="P" class="section">
+    <div class="section-title">Practica 1</div>
+    <h2 class="section-heading">Ejercicios de Practica</h2>
+
+    <div class="practica-subnav">
+        <button class="sub-btn active" onclick="mostrarSub('P1')">Ejercicio 1 — Deteccion de Texturas</button>
+        <button class="sub-btn"        onclick="mostrarSub('P2')">Ejercicio 2 — Media de Puntos BD</button>
+        <button class="sub-btn"        onclick="mostrarSub('P3')">Ejercicio 3 — La Vaca Lola Moderna</button>
+    </div>
+
+    <!-- SUB 1 -->
+    <div id="P1" class="sub-section active">
+        <div class="section-title">Ejercicio 1</div>
+        <h3 class="section-heading" style="font-size:22px;">Deteccion de Texturas similar a QGIS</h3>
+        <p class="section-desc">
+            Aplicacion Windows Forms que permite cargar una imagen, seleccionar una zona de textura mediante clic,
+            y pintar automaticamente todas las regiones con caracteristicas cromaticas similares, replicando
+            el comportamiento de clasificacion de coberturas del suelo en QGIS. Sin base de datos; todo el procesamiento
+            es en memoria sobre bloques de pixeles comparados por distancia RGB.
+        </p>
+        <div class="img-gallery">
+            <img src="ejer1_1.jpeg" alt="Deteccion de texturas - captura 1">
+            <img src="ejer1_2.jpeg" alt="Deteccion de texturas - captura 2">
+        </div>
+        <div class="download-area">
+            <a href="ejercicio_01.rar" download>
+                <button class="btn-download">Descargar Ejercicio 1</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- SUB 2 -->
+    <div id="P2" class="sub-section">
+        <div class="section-title">Ejercicio 2</div>
+        <h3 class="section-heading" style="font-size:22px;">Media de Puntos Almacenados en BD</h3>
+        <p class="section-desc">
+            Aplicacion que permite hacer clic sobre una imagen para capturar coordenadas y valores RGB de puntos
+            de interes. Cada punto se almacena en una base de datos SQL Server local. Se puede calcular la media
+            cromatica del conjunto de puntos guardados y visualizar el color resultante en pantalla.
+        </p>
+        <div class="img-gallery single">
+            <img src="ejer2.jpeg" alt="Media de puntos en base de datos">
+        </div>
+        <div class="download-area">
+            <a href="ejercicio_02.rar" download>
+                <button class="btn-download">Descargar Ejercicio 2</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- SUB 3 -->
+    <div id="P3" class="sub-section">
+        <div class="section-title">Ejercicio 3</div>
+        <h3 class="section-heading" style="font-size:22px;">La Vaca Lola — Version Moderna</h3>
+        <p class="section-desc">
+            Produccion multimedia que reimagina la cancion infantil La Vaca Lola en un genero moderno (rock, salsa u otro),
+            grabada e interpretada por el autor. Se integra animacion y sincronizacion audiovisual como parte del
+            ejercicio de produccion multimedia.
+        </p>
+        <div class="video-wrap">
+            <video controls>
+                <source src="python_video.py" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+        </div>
+        <div class="block-label">Archivo fuente Python incluido en la descarga</div>
+        <div class="download-area">
+            <a href="python_video.py" download>
+                <button class="btn-download">Descargar Script Python</button>
+            </a>
+        </div>
+    </div>
 </div>
 
 <script>
-    mostrar('A');
+    function mostrar(seccion) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(seccion).classList.add('active');
+
+        // resalta el botón correcto
+        const btns = document.querySelectorAll('.nav-btn');
+        const mapa = { A: 0, B: 1, C: 2, P: 3 };
+        btns[mapa[seccion]].classList.add('active');
+    }
+
+    function mostrarSub(sub) {
+        document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(sub).classList.add('active');
+        event.target.classList.add('active');
+    }
 </script>
 
 </body>
